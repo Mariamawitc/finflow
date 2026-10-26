@@ -46,12 +46,12 @@ class Account(models.Model):
         return self.account_number
 
     
-def save(self, *args, **kwargs):
-    if self.account_number:
+    def save(self, *args, **kwargs):
+      if self.account_number:
         super().save(*args, **kwargs)
         return
 
-    for attempt in range(5):
+      for attempt in range(5):
         self.account_number = generate_account_number()
 
         try:
